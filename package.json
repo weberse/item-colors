@@ -1,0 +1,39 @@
+{
+  "name": "item-colors",
+  "version": "0.0.1",
+  "description": "colors",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/weberse/item-colors.git"
+  },
+  "main": "src/colors.js",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
+    "react": "^0.12.0",
+    "less": "2.5.0",
+    "react-css": "0.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-connect": "*",
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "~0.1.17",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "scripts": {
+    "start": "watchify -o src/bundle.js -v -d src/colors.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > src/bundle.min.js",
+    "test": "jest"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  }
+}
